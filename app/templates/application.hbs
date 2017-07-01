@@ -1,5 +1,5 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<h1>Ember Music Box</h1>
 
-{{outlet}}
+{{#each audioService.sounds as |sound|}}
+  <button onclick={{action 'play' sound}}>Play {{sound}}</button>
+{{/each}}
