@@ -31,7 +31,6 @@ export default Em.Service.extend({
     let howl = this.get('howl');
 
     return Object.keys(howl._sprite);
-    debugger;
   }),
 
   play(sound) {

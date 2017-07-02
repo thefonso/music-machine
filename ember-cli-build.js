@@ -7,6 +7,7 @@ module.exports = function(defaults) {
   });
 
   app.import('bower_components/howler.js/dist/howler.core.min.js');
+  app.import('bower_components/lz-string/libs/lz-string.min.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
