@@ -10,8 +10,5 @@ export default Ember.Route.extend({
   },
   model(params) {
     return Song.fromEncodedBase64(params.data);
-  },
-  afterModel(song) {
-    this.set('playbackService.song', song);
   }
 });
