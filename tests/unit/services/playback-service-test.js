@@ -56,4 +56,49 @@ test('play', function(assert){
   assert.ok(tickStub.calledOnce, 'tick was called once');
 });
 
+test('stop', function(assert){
+  let service = this.subject();
 
+  service.set('isPlaying', true);
+  service.set('tickCount', 20);
+
+  service.stop();
+
+  assert.equal(service.get('isPlaying'), false);
+  assert.equal(service.get('tickCount'), 20);
+});
+
+test('tick when stopped', function(assert){
+  let service = this.subject();
+  let runLaterStub = this.stub(Ember.run, 'later');
+
+  service.setProperties({
+    isPlaying: false,
+    tickCount: 4
+  });
+
+  service.tick();
+
+  assert.equal(service.get('tickCount'), 4);
+  assert.ok(runLaterStub.notCalled, 'no run.later');
+});
+
+test('tick when playing', function(assert){
+  let service = this.subject();
+  let runLaterStub = this.stub(Ember.run, 'later');
+
+  service.setProperties({
+    isPlaying: true,
+    tickCount: 8,
+    song: Song.create({tempo: 60})
+  });
+
+  service.tick();
+
+  assert.equal(service.get('tickCount'), 9);
+  assert.ok(runLaterStub.calledOnce, 'a run.later is set');
+  assert.ok(
+    runLaterStub.calledWithExactly(service, service.tick),
+    'run.later receives correct arguments'
+  );
+});

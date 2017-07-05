@@ -18,13 +18,15 @@ export default Ember.Service.extend({
     this.tick();
   },
 
-  tick(){
-    //increment tickCount
-    //Em.run.later(..)
-  },
-
   stop(){
     this.set('isPlaying', false);
+  },
+
+  tick(){
+    if(this.get('isPlaying')){
+      this.incrementProperty('tickCount');
+      Ember.run.later(this, this.tick, this.get('tickInterval'));
+    }
   },
 
   tickInterval: Ember.computed('song.tempo', function() {
