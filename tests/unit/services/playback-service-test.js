@@ -1,5 +1,7 @@
-import { moduleFor, test } from 'ember-qunit';
+import { moduleFor } from 'ember-qunit';
+import test from 'ember-sinon-qunit/test-support/test';
 import Song from 'music-machine/models/song';
+
 
 moduleFor('service:playback-service', 'Unit | Service | playback service', {
   // Specify the other units that are required for this test.
@@ -42,12 +44,16 @@ test('tickInterval', function(assert){
 
 test('play', function(assert){
   let service = this.subject();
+  let tickStub = this.stub(service, 'tick');
 
-  service.set('isPlaying', true);
-  service.set('tickCount', 20);
+  service.set('isPlaying', false);
+  service.set('tickCount', 10);
 
-  service.stop();
+  service.play();
 
-  assert.equal(service.get('isPlaying'), false);
-  assert.equal(service.get('tickCount'), 20);
+  assert.equal(service.get('isPlaying'), true);
+  assert.equal(service.get('tickCount'), 0);
+  assert.ok(tickStub.calledOnce, 'tick was called once');
 });
+
+

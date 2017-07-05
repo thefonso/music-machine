@@ -13,14 +13,14 @@ export default Ember.Service.extend({
   play(){
     this.setProperties({
       isPlaying: true,
-      tickCount: 0,
+      tickCount: 0
     });
     this.tick();
   },
 
   tick(){
-    //increment tickcount
-    //Em.run.later
+    //increment tickCount
+    //Em.run.later(..)
   },
 
   stop(){
