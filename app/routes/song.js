@@ -3,6 +3,7 @@ import Song from 'music-machine/models/song';
 
 export default Ember.Route.extend({
   playbackService: Ember.inject.service(),
+
   queryParams: {
     data: {
       refreshModel: true
@@ -10,5 +11,8 @@ export default Ember.Route.extend({
   },
   model(params) {
     return Song.fromEncodedBase64(params.data);
+  },
+  afterModel(song) {
+    this.set('playbackService.song', song);
   }
 });
