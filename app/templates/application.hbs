@@ -1,67 +1,21 @@
-<div class="container">
-  <div class="header">
-    <h2><a href="/">Kosh Beats</a></h2>
-    <h1>{{playbackService.display}}</h1>
-    <h2>{{playbackService.tickInterval}}ms ({{playbackService.tempo}}bpm)</h2>
-    <span>
-      <a href="https://thefonso.com">@thefonso</a> |
-      <a href="https://github.com/thefonso/kosh-beats">Source</a>
-    </span>
-  </div>
-
-  <br style="clear: both" />
-
-  <div class="playback">
-    <div class="btn-toolbar">
-      {{#if isActive}}
-        <button type="button" class="btn btn-danger" {{action 'stop'}}>
-          <i class="icon-stop"></i>
-        </button>
-      {{else}}
-        <button type="button" class="btn" {{action 'play'}}>
-          <i class="icon-play"></i>
-        </button>
-      {{/if}}
-
-      <div class="btn-group"></div>
-
-      <div class="btn-group">
-        <button type="button" class="btn" {{action 'decreaseTempo'}}>
-          <i class="icon-minus-sign"></i>
-        </button>
-        <button type="button" class="btn"><strong>{{playbackService.tempo}} bpm</strong></button>
-        <button type="button" class="btn" {{action 'increaseTempo'}}>
-          <i class="icon-plus-sign"></i>
-        </button>
-      </div>
-
-      <div class="btn-group">
-        <button type="button" class="btn"><strong>{{playbackService.display}}</strong></button>
-      </div>
-
-      <div class="dropdown show" style="float: right;">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<h1>Kosh Music Box</h1>
 
 
+{{#link-to 'song' (query-params data="N4IgdghgtgpiBcIDuMCWAnAJgAgGaoGcALGAkAGhABcYoAHAewQEYAWAVkoGMiIwwYAGzLwA2qAIMArmEwIQAa1RcFFEADcGgqbBaUCNOiPEahDLqioBPFgF9yodWYvWEABnuPnlm%2FDcA6dk9TQXMfd2CnUJdfDwcQsNc%2FSO8kuK9o8OT4qMTYlMy0gryInNT8ssKKjJLsmpjS%2Bqz0hIb4ZmK2ltyuzua%2Bosra7vLG1v6h3smJpsHZ6vG5xYWemeWIgF1gyRk5RAJIdDhKTW1ddv1DY3mx1aW7ldG69faBx6rbp4Cg6fuvt8%2BH2eDzsv3ewwBfkCkJGQNhELBgOG0MRwP%2BqO%2BMKxGOxN1eOIJeMxW3iO1k8iIqF4VAA%2BlxQgQYHITlodHALiADDAjAgTCCoT8iTCUUKMSKXvCuuL%2BZLmtL0UT5XDhYKJSqsVstkA")}}
+  Weird Fishes
+{{/link-to}}
 
-</div>
+-
 
+{{#link-to 'song' (query-params data="N4IgdghgtgpiBcICSACAsgSwOYAsAuKAQjCgOoBOA9mFiADQh4xQAOlCAjBwAwMDGOCGDAwANgGcEAbVDjKAVzAATBCADWGPmvogAbpVHzYnBuKYtJ8GXrGU%2BGPAE9OAXzqhdt%2B04Tc3HrwdneD93G1E7IN9%2FcMifEJjPCO9g0IDkqISwpLjUxMD4tNiU6OyCvLKMwvyqivTc10qGrPqShIBdGLlFFURxSHI4Bn1DY3gOU3NLaxy2otnM%2BfLS1sWa5o51ua21prbNvd3V6sOT47rizIPzlcuzu7zOsO7lVRwMQTwAfT4I8RgVMMDEY4ONJjALNIbi0HrcFvFrrCYfCLijfAA6ACsOwRONRy2RBKWtUa0OJzXJ21OwURaI6XQUr0Q70%2BX0oLBgYB0IxBJhAZgh0zJeLhRJFhJJISx4spRyR3Gl1NFktl9zpqvxKpl2s6nSAAA")}}
+  I might be wrong
+{{/link-to}}
 
+{{outlet}}
 
+<hr />
 
-
-
-
-
+{{#each audioService.sounds as |sound|}}
+  <button onmouseover={{action 'play' sound}}>Play {{sound}}</button>
+{{/each}}
 

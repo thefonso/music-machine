@@ -31,9 +31,9 @@ let Controls = Ember.Component.extend({
         this.decrementProperty('song.tempo', 5);
       }
     },
-    // switchToPreset(preset){
-    //   this.sendAction('switchToPreset', preset);
-    // }
+    switchToPreset(preset){
+      this.sendAction('switchToPreset', preset);
+    }
   }
 });
 
