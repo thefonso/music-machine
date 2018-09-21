@@ -1,7 +1,8 @@
 <div class="container">
   <div class="header">
     <h2><a href="/">Kosh Beats</a></h2>
-
+    <!--<h1>{{playbackService.display}}</h1>-->
+    <!--<h2>{{playbackService.tickInterval}}ms ({{playbackService.tempo}}bpm)</h2>-->
     <span>
       <a href="https://thefonso.com">@thefonso</a> |
       <a href="https://github.com/thefonso/kosh-beats">Source</a>
@@ -28,14 +29,14 @@
         <button type="button" class="btn" {{action 'decreaseTempo'}}>
           <i class="icon-minus-sign"></i>
         </button>
-        <button type="button" class="btn"><strong>{{song.tempo}} bpm</strong></button>
+        <button type="button" class="btn"><strong>{{playbackService.tempo}} bpm</strong></button>
         <button type="button" class="btn" {{action 'increaseTempo'}}>
           <i class="icon-plus-sign"></i>
         </button>
       </div>
 
       <div class="btn-group">
-        <button type="button" class="btn"><strong>{{display}}</strong></button>
+        <button type="button" class="btn"><strong>{{playbackService.display}}</strong></button>
       </div>
 
       <div class="dropdown show" style="float: right;">
