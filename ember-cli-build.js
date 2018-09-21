@@ -3,7 +3,11 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    'ember-bootstrap': {
+      'bootstrapVersion': 4,
+      'importBootstrapFont': false,
+      'importBootstrapCSS': false
+    }
   });
 
   app.import('bower_components/howler.js/dist/howler.core.min.js');
