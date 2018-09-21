@@ -1,0 +1,24 @@
+<span class="controls">
+  <h3 {{action 'next'}}>{{channel.sound}}</h3>
+  <span class="channel-closer">
+    {{#if channel.volume}}
+      <button type="button" class="tiny transparent" {{action 'mute'}} title="Mute Channel">
+        <i class="icon-volume-up icon-white"></i>
+      </button>
+    {{else}}
+      <button type="button" class="tiny transparent" {{action 'unmute'}} title="Unmute Channel">
+        <i class="icon-volume-off icon-white"></i>
+      </button>
+    {{/if}}
+    <button type="button" class="tiny transparent" {{action 'delete'}} title="Delete Channel">
+      <i class="icon-remove-circle icon-white"></i>
+    </button>
+  </span>
+</span>
+<span class="steps">
+  <ul>
+    {{#each step in channel.steps}}
+      {{step-component step=step previewStep='previewStep'}}
+    {{/each}}
+  </ul>
+</span>

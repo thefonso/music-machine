@@ -2,6 +2,8 @@ import Em from 'ember';
 import Step from './step';
 
 let Channel = Em.Object.extend({
+  sound: 'kick',
+  volume: 1,
   steps: null,
 
   init() {

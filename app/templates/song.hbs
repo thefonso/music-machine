@@ -1,16 +1,7 @@
-{{controls-component}}
+{{controls-component song=model switchToPreset='switchToPreset'}}
 
-<h3>{{model.name}}</h3>
-
-<table style="width: 100%;">
+<div class="main">
   {{#each model.channels as |channel|}}
-    <tr>
-      <td align="center">{{channel.sound}}</td>
-      {{#each channel.steps as |step|}}
-        <td style="{{if step.isPlaying 'background-color: green;'}}">{{step.velocity}} {{step.isPlaying}}</td>
-      {{/each}}
-    </tr>
+    {{channel-component channel=channel deleteChannel='deleteChannel'}}
   {{/each}}
-</table>
-
-{{outlet}}
+</div>

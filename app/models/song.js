@@ -1,7 +1,11 @@
 import Em from 'ember';
+import { Serializer, Deserializer } from './mixins/song-serialization'
 import Channel from './channel';
+import presets from './data/presets';
 
-let Song = Em.Object.extend({
+let Song = Em.Object.extend(Serializer, {
+  name: 'Untitled',
+  tempo: 100,
   channels: null,
 
   init() {
@@ -31,44 +35,16 @@ let Song = Em.Object.extend({
 
     return notes;
   },
-  serialize() {
-    return {
-      name: this.get('name'),
-      tempo: this.get('tempo'),
-      channels: this.get('channels').invoke('serialize')
-    };
-  },
 
-  toEncodedBase64() {
-    let data = this.serialize();
-    let json = JSON.stringify(data);
-    let base64Data = LZString.compressToBase64(json);
-
-    return encodeURIComponent(base64Data);
+  addChannel: function(sound) {
+    this.get('channels').pushObject(
+      Channel.create({ sound: sound })
+    );
   }
-}).reopenClass({
-  fromEncodedBase64(encodedBase64Data) {
-    let base64Data = decodeURIComponent(encodedBase64Data);
-    let json = LZString.decompressFromBase64(base64Data);
-    let data = JSON.parse(json);
 
-    return this.deserialize(data);
-  },
-
-  deserialize(data) {
-    let song = Song.create({
-      name: data.name,
-      tempo: data.tempo
-    });
-
-    let channels = song.get('channels');
-
-    data.channels.forEach((channelData) => {
-      let channel = Channel.deserialize(channelData);
-      channels.pushObject(channel);
-    });
-
-    return song;
+}).reopenClass(Deserializer, {
+  fromPreset: function(preset) {
+    return this.fromBase64Compressed(presets[preset]);
   }
 });
 
