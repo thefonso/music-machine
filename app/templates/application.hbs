@@ -16,6 +16,6 @@
 <hr />
 
 {{#each audioService.sounds as |sound|}}
-  <button onmouseover={{action 'play' sound}}>Play {{sound}}</button>
+  <button onclick={{action 'play' sound}}>{{sound}}</button>
 {{/each}}
 

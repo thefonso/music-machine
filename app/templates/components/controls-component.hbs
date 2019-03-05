@@ -16,14 +16,14 @@
       <button type="button" class="btn" {{action 'decreaseTempo'}}>
         <i class="icon-minus-sign"></i>
       </button>
-      <button type="button" class="btn"><strong>{{song.tempo}} bpm</strong></button>
+      <button type="button" class="btn"><strong>{{playbackService.tempo}} bpm</strong></button>
       <button type="button" class="btn" {{action 'increaseTempo'}}>
         <i class="icon-plus-sign"></i>
       </button>
     </div>
 
     <div class="btn-group">
-      <button type="button" class="btn"><strong>{{display}}</strong></button>
+      <button type="button" class="btn"><strong>{{playbackService.display}}</strong></button>
     </div>
 
     <div class="btn-group" style="float: right;">
